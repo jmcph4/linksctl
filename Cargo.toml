@@ -1,0 +1,20 @@
+[package]
+name = "linksctl"
+version = "0.1.0"
+edition = "2024"
+description = "Turn a Markdown bookmark log into private and public directory pages"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive"] }
+eyre = "0.6"
+futures = "0.3"
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls-webpki-roots", "gzip", "json"] }
+rusqlite = { version = "0.40", features = ["bundled"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+tokio = { version = "1", features = ["fs", "io-util", "macros", "process", "rt-multi-thread", "time"] }
+toml = { version = "0.9", default-features = false, features = ["parse", "serde", "std"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+url = "2"
+webtronix = { git = "https://github.com/Alpine-Computing-Research/webtronix", default-features = false }

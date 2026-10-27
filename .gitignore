@@ -1,0 +1,54 @@
+# Build output
+/target/
+*.rlib
+*.rmeta
+*.pdb
+
+# Pipeline intermediates and outputs (regenerate with `linksctl run`)
+# URL extraction
+urls.txt
+# Web retrieval: the SQLite page index and its journal/WAL side files
+*.db
+*.db-shm
+*.db-wal
+*.db-journal
+*.sqlite
+*.sqlite3
+# Categorisation: the labelling JSON
+categories.json
+# Artefact generation: the directory pages
+directory-private.html
+directory-public.html
+# Banlist is per-user, not part of the tool
+banlist.txt
+
+# Local configuration (may hold an API key); linksctl.example.toml is tracked
+linksctl.toml
+*.key
+.anthropic-key
+
+# Scratch and temporary files
+*.tmp
+*.log
+*.orig
+*.rej
+*~
+.#*
+
+# Editor and OS noise
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Coverage and profiling output
+*.profraw
+*.profdata
+tarpaulin-report.html
+cobertura.xml
+lcov.info
+
+# Cargo mutable local state (lockfile stays tracked: this is a binary crate)
+.cargo/.package-cache

@@ -1,0 +1,30 @@
+# linksctl configuration. Copy to linksctl.toml in the working directory or
+# pass with --config. Every key here defaults the flag of the same name; a
+# flag on the command line wins. Environment variables are never read.
+
+log = "info"                 # tracing filter; replaces -v / -q
+index = "index.db"           # the page index (SQLite)
+categories = "categories.json"
+resources = "resources.md"   # default resources file for categorise / build
+# banlist = "banlist.txt"    # URLs or domains to leave out of the pages
+out = "."                    # where the directory pages are written
+title = "resources directory"
+
+[fetch]                      # web retrieval (Webtronix): every page is rendered in
+concurrency = 16             # headless Chrome and stored as HTML; not configurable
+timeout = 30                 # seconds per request, also bounds each render
+# chrome = "/usr/bin/chromium"
+# user_agent = "linksctl/0.1"
+
+[llm]                        # categorisation
+mode = "api"                 # "api" (Anthropic Messages API) or "agent" (`claude -p`)
+model = "claude-opus-5-5"    # omit in agent mode to use the harness default
+# api_key = "sk-ant-..."     # or:
+# api_key_file = "/home/me/.anthropic-key"
+agent_command = "claude"
+# effort = "medium"          # low, medium, high, xhigh, max (API mode)
+timeout = 600                # seconds per API request
+batch_size = 20              # pages per request
+max_chars = 2000             # characters of visible page text per page
+concurrency = 8              # requests in flight
+taxonomy_chars = 300000      # characters of the collection listing shown when proposing the taxonomy
